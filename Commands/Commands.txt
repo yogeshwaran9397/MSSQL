@@ -1,0 +1,38 @@
+# Create database 
+Create database TestBD
+
+#Alter database
+Alter database DataBaseName Modify Name = NewDataBaseName
+
+#Drop database 
+Drop database DataBaseYouWantToDrop 
+
+DLL - Create / alter , Sp_rename, drop, truncate 
+DML
+DQL/DRL
+TCL
+DCL
+
+
+#Create Table 
+Create Table TableName
+(
+<column Name> <DataType>[Size],
+<column Name> <DataType>[Size]
+)
+
+#Alter 
+#Increment Size 
+Alter Table <TableName> Alter Column <ColumnName> <NewDataType>[Size] 
+
+#Add new column
+ALTER TABLE <TABLENAME> ADD <NEWCOLUMNNAME> <DATA TYPE>[NEW SIZE]
+
+#Drop column
+ALTER TABLE <TABLENAME> DROP COLUMN <COLUMNNAME>
+
+#Drop Table 
+Drop Table TableName 
+
+#Drop Database - Rollback to single user and then drop 
+Alter database databaseName Set Single_User with Rollback Immediate
