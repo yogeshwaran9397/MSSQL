@@ -72,7 +72,9 @@ INSERT into EmployeeForeign VALUES (103,'CC', 52000, 40) -- Not Allowed
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------
+CREATE DATABASE Cmpy
 
+USE Cmpy
 
 CREATE TABLE Departments (
     DNO INT PRIMARY KEY,            -- Department Number (Primary Key)
@@ -137,7 +139,8 @@ SELECT SUM(Salary) AS TotalSalary FROM Employees
 
 SELECT SUM(Salary) AS TOPSALARY FROM (SELECT TOP(3) Salary FROM Employees) AS TOPSALARY
 
-
+CREATE NONClustered INDEX ID_INDEX ON Employees(EmployeeID)
+CREATE Clustered INDEX Name_INDEX ON Employees(FirstName)
 
 
 

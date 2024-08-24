@@ -24,6 +24,10 @@ INSERT INTO Employee (Id, Name, Department, Salary, Gender, Age, City) VALUES (1
 INSERT INTO Employee (Id, Name, Department, Salary, Gender, Age, City) VALUES (1009, 'Pranaya Kumar', 'IT', 50000, 'Male', 28, 'Mumbai');
 INSERT INTO Employee (Id, Name, Department, Salary, Gender, Age, City) VALUES (1010, 'Hina Sharma', 'HR', 75000, 'Female', 26, 'Mumbai');
 
+USE Company;
+
+SELECT * FROM Employee
+
 -- Create Projects Table
 CREATE TABLE Projects (
     ProjectId INT PRIMARY KEY IDENTITY(1, 1),
@@ -49,6 +53,8 @@ INSERT INTO Projects (Title, ClientId, EmployeeId, StartDate, EndDate) VALUES
 ('MySQL database from my desktop application', 4, 1008, GETDATE(), (Getdate() + 80)),
 ('Develop new WordPress plugin for my business website', 2, NULL, GETDATE(), (Getdate() + 90));
 
+SELECT * FROM Employee
+SELECT * FROM Projects
 
 SELECT Id as EmployeeID, Name, Department, City, Title as Project, ClientId
 FROM Employee 
@@ -56,15 +62,24 @@ INNER JOIN Projects
 ON Employee.Id = Projects.EmployeeId;
 
 
-SELECT Id as EmployeeID, Name, Department, City, Title as Project, ClientId
-FROM Employee 
-LEFT OUTER JOIN Projects 
-ON Employee.Id = Projects.EmployeeId;
+SELECT * FROM Employee
+SELECT * FROM Projects
+
+SELECT emp.Id as EmployeeID, emp.Name, emp.Department, emp.City, proj.Title as Project, proj.ClientId
+FROM Employee emp
+LEFT OUTER JOIN Projects proj
+ON emp.Id = proj.EmployeeId;
+
+SELECT * FROM Employee
+SELECT * FROM Projects
 
 SELECT Id as EmployeeID, Name, Department, City, Title as Project, ClientId
 FROM Employee 
 RIGHT OUTER JOIN Projects 
 ON Employee.Id = Projects.EmployeeId;
+
+SELECT * FROM Employee
+SELECT * FROM Projects
 
 SELECT Id as EmployeeID, Name, Department, City, Title as Project, ClientId
 FROM Employee 
