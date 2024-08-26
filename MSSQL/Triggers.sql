@@ -1,0 +1,43 @@
+CREATE DATABASE SHOES
+
+USE SHOES
+
+CREATE TABLE SHOESTABLE(
+	 ModelName VARCHAR(15),
+	 ShoeID INT,
+	 Brand VARCHAR(15),
+	 Size INT
+) 
+
+CREATE TABLE auditShoesTable(
+Action VARCHAR(80))
+
+
+INSERT INTO SHOESTABLE VALUES('Sport', 1, 'PUMA', 12)
+INSERT INTO SHOESTABLE VALUES('Normal', 2, 'PUMA', 12)
+
+
+CREATE TRIGGER SelectAllShoesTigger
+ON SHOESTABLE
+FOR INSERT 
+AS 
+BEGIN 
+	SELECT * FROM inserted
+	DECLARE @id INT
+	SELECT @id = ShoeID from inserted
+
+	INSERT INTO auditShoesTable VALUES(
+	'ID -' + CAST(@id as varchar(15)) + 'is added at ' + CAST(GETDATE() as varchar(50)) 
+	)
+
+	--SELECT * FROM auditShoesTable 
+END
+
+--DROP TRIGGER SelectAllShoesTigger
+
+--DROP TABLE SHOESTABLE 
+
+INSERT INTO SHOESTABLE VALUES('SPORT', 3, 'BATA', 13)
+INSERT INTO SHOESTABLE VALUES('NORMAL', 4, 'BATA', 14)
+
+SELECT * FROM auditShoesTable
